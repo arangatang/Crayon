@@ -63,7 +63,6 @@ def grid_search(
     # do grid search
     best_combo = None
     best_value = None
-    best_config = None
     i = 0
     date = datetime.now().strftime("%B-%d-%Y--%H-%M-%S")
     base_path = Path(output_dir) / "gridsearch" / date
@@ -75,7 +74,6 @@ def grid_search(
 
         new = deepcopy(algorithm)
         new.hyperparameters.update(combo)
-        print(new.hyperparameters)
         generate_config(
             algorithm=new,
             dataset=dataset,
@@ -122,7 +120,6 @@ def grid_search(
 
     if not best_config:
         print("All jobs failed.")
-        return None
 
     print(
         "Tuning finished.\n",

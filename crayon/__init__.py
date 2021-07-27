@@ -8,4 +8,3 @@ from .ConfigGenerator import (
 from .Tuner.tuner import grid_search
 from .Benchmarker import benchmark
 from .Benchmarker.benchmarker import display_ranking
-from .Benchmarker.benchmarker import verify_if_benchmarks_behave_the_same as verify

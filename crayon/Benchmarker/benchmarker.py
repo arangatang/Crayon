@@ -2,22 +2,29 @@
 This file should given a config, calculate how it performs in comparison to 
 previously run algorithms on the same dataset.
 """
-import hashlib
-import math
+import json
+from collections import defaultdict
 from datetime import datetime
+import math
 from pathlib import Path
-from typing import Union
+from typing import Callable, Union
 
 import boto3
 import numpy as np
-import pandas as pd
+from scipy.stats.stats import percentileofscore
 import yaml
-from crayon.Runner import Jobs, Job, run_config
+from crayon.Runner import run_config
 from crayon.utils import crayon_dir, crayon_results
-from crayon.Verifier.verifier import verify
 from gluonts.dataset.common import CategoricalFeatureInfo
-from gluonts.dataset.repository.datasets import get_dataset, materialize_dataset
-from itertools import chain
+from gluonts.dataset.repository.datasets import (
+    get_dataset,
+    materialize_dataset,
+)
+import pandas as pd
+from crayon.Runner import Jobs
+from uuid import uuid4
+import hashlib
+from crayon.Verifier.verifier import verify
 
 
 class Ranking:
@@ -298,9 +305,7 @@ def benchmark(
     session: boto3.Session = boto3.Session(),
     save_benchmark: bool = True,
     benchmark_id: str = datetime.now().strftime("%Y/%m/%d/%H-%M-%S"),
-    datasets_to_run: list = ["m5", "m4_daily", "electricity", "solar_energy"],
     runs=100,
-    ignore_exceptions: bool = False,
 ):
     # check if the benchmark id has been used before
     assert not load_benchmark(
@@ -320,10 +325,6 @@ def benchmark(
 
     results = []
     for ds_name in datasets:
-        if ds_name not in datasets_to_run:
-            print(f"skipping {ds_name}")
-            continue
-
         if f"{algorithm_name}_{ds_name}" in algorithm_config:
             print(f"Using tuned version {algorithm_name}_{ds_name}")
             algo = f"{algorithm_name}_{ds_name}"
@@ -342,35 +343,19 @@ def benchmark(
         )
 
         experiment = f"config.{algo} * config.{ds_name}"
-        if ignore_exceptions:
-            finished = []
-            while len(finished) < runs:
-                try:
-                    jobs = run_config(
-                        config=conf,
-                        combination=experiment,
-                        session=session,
-                        runs=1,
-                        local_output_dir=output_dir,
-                    )
-                    finished.append(jobs.data)
-                except Exception as e:
-                    pass
+        try:
+            jobs = run_config(
+                config=conf,
+                combination=experiment,
+                session=session,
+                runs=runs,
+                local_output_dir=output_dir,
+            )
+        except Exception as e:
+            print(f"An exception occured when running {algo} on {ds_name}.")
+            print(e)
+            jobs = Jobs([])
 
-            jobs = Jobs(list(chain.from_iterable(finished)))
-        else:
-            try:
-                jobs = run_config(
-                    config=conf,
-                    combination=experiment,
-                    session=session,
-                    runs=runs,
-                    local_output_dir=output_dir,
-                )
-            except Exception as e:
-                print(f"An exception occured when running {algo} on {ds_name}.")
-                print(e)
-                jobs = Jobs([])
         print("Results of", algo, "running on dataset:", ds_name)
         print(jobs.metrics.to_string(index=False, header=True))
 
@@ -412,12 +397,10 @@ def benchmark(
             print("stored benchmarking results to:", path)
 
 
-def display_ranking(target_metric: str):
-    """
-    prints the complete ranking table with all datasets and algorithms
-    """
-    with crayon_results().open("r") as fp:
+def get_ranking(target_metric: str, brf: Path = crayon_results(), ids: list = None):
+    with brf.open("r") as fp:
         previous_benchmarks = yaml.safe_load(fp)
+
     if not previous_benchmarks:
         print("no benchmarks found.")
         previous_benchmarks = []
@@ -425,6 +408,9 @@ def display_ranking(target_metric: str):
     # calculate the score of these benchmarks for the specified target metric
     scored = []
     for run in previous_benchmarks:
+        if ids and run["benchmark_id"] not in ids:
+            continue
+
         scored.append(
             {
                 "score": calc_score(Jobs.from_list(run["jobs"]), target_metric),
@@ -451,9 +437,14 @@ def display_ranking(target_metric: str):
         )
 
     # calculate ranking of the latest run based on score
-    visualize(
-        Ranking(ranks={ds_name: None for ds_name in groups}, rankings=dict(groups))
-    )
+    return Ranking(ranks={ds_name: None for ds_name in groups}, rankings=dict(groups))
+
+
+def display_ranking(target_metric: str, brf: Path = crayon_results()):
+    """
+    prints the complete ranking table with all datasets and algorithms
+    """
+    visualize(get_ranking(target_metric, brf))
 
 
 def verify_if_benchmarks_behave_the_same(
