@@ -5,7 +5,7 @@ SimpleFeedForward:
     $from: base
     name: SimpleFeedForward
     hyperparameters:
-        epochs: 10
+        epochs: 1
         freq:
             $eval: $trial.dataset.meta.freq
         prediction_length:
@@ -24,7 +24,7 @@ deepar:
     $from: base
     name: deepar
     hyperparameters:
-        epochs: 10
+        epochs: 1
         freq:
             $eval: $trial.dataset.meta.freq
         prediction_length:
