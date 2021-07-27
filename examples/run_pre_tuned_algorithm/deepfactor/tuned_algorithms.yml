@@ -16,7 +16,7 @@ deepFactorEstimator_electricity:
     num_workers: 8
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
-  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
+  image: arangatang/masterthesis:gluonts_cpu_commit_4d1a9a0
   instance: local
   name: deepFactorEstimator
 
@@ -41,7 +41,7 @@ deepFactorEstimator_solar_energy:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
+  image: arangatang/masterthesis:gluonts_cpu_commit_4d1a9a0
   instance: local
   name: deepFactorEstimator
 
@@ -70,7 +70,7 @@ deepFactorEstimator_m5:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
+  image: arangatang/masterthesis:gluonts_cpu_commit_4d1a9a0
   instance: local
   name: deepFactorEstimator
 
@@ -95,6 +95,6 @@ deepFactorEstimator_m4_daily:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
+  image: arangatang/masterthesis:gluonts_cpu_commit_4d1a9a0
   instance: local
   name: deepFactorEstimator

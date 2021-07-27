@@ -67,7 +67,9 @@ def tune(
     start_time = datetime.now().strftime("%B-%d-%Y--%H-%M-%S")
 
     algorithm["image"] = (
-        "gluonts:gpu_101" if gpu else "arangatang/masterthesis:gluonts_commit_4d1a9a0"
+        "gluonts:gpu_101"
+        if gpu
+        else "arangatang/masterthesis:gluonts_cpu_commit_4d1a9a0"
     )
     algorithm["hyperparameters"].update(defaults)
 

@@ -18,7 +18,7 @@ NBEATSEnsembleEstimator_electricity:
       $eval: $trial.dataset.meta.prediction_length
     widths:
     - 256
-  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
+  image: arangatang/masterthesis:gluonts_cpu_commit_4d1a9a0
   instance: local
   name: NBEATSEnsembleEstimator
 
@@ -45,7 +45,7 @@ NBEATSEnsembleEstimator_solar_energy:
     use_feat_static_cat: true
     widths:
     - 512
-  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
+  image: arangatang/masterthesis:gluonts_cpu_commit_4d1a9a0
   instance: local
   name: NBEATSEnsembleEstimator
 
@@ -76,7 +76,7 @@ NBEATSEnsembleEstimator_m5:
     use_feat_static_cat: true
     widths:
     - 512
-  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
+  image: arangatang/masterthesis:gluonts_cpu_commit_4d1a9a0
   instance: local
   name: NBEATSEnsembleEstimator
 
@@ -103,6 +103,6 @@ NBEATSEnsembleEstimator_m4_daily:
     use_feat_static_cat: true
     widths:
     - 512
-  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
+  image: arangatang/masterthesis:gluonts_cpu_commit_4d1a9a0
   instance: local
   name: NBEATSEnsembleEstimator

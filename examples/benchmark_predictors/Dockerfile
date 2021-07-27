@@ -1,3 +1,3 @@
-FROM arangatang/masterthesis:gluonts_commit_4d1a9a0
+FROM arangatang/masterthesis:gluonts_cpu_commit_4d1a9a0
 
 RUN pip install statsmodels

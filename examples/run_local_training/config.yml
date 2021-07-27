@@ -1,7 +1,7 @@
 SimpleFeedForward:
     $name: SimpleFeedForward
     #image: gluonts:cpu_new
-    image: arangatang/masterthesis:gluonts_commit_4d1a9a0
+    image: arangatang/masterthesis:gluonts_cpu_commit_4d1a9a0
     hyperparameters:
         epochs: 1
         freq:
