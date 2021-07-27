@@ -1,5 +1,5 @@
 base:
-  image: gluonts:naive
+  image:  arangatang/masterthesis:gluonts_4d1a9a0_naive
   instance: local
   hyperparameters:
     prediction_length:

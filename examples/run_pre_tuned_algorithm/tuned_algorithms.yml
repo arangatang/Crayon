@@ -13,7 +13,7 @@ deepar_electricity:
     num_workers: 8
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: deepar
 
@@ -35,7 +35,7 @@ deepar_electricity:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: deepar
 
@@ -61,7 +61,7 @@ deepar_m5:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: deepar
 
@@ -83,7 +83,7 @@ deepar_m4_daily:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: deepar
 
@@ -105,7 +105,7 @@ deepFactorEstimator_electricity:
     num_workers: 8
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: deepFactorEstimator
 
@@ -130,7 +130,7 @@ deepFactorEstimator_solar_energy:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: deepFactorEstimator
 
@@ -159,7 +159,7 @@ deepFactorEstimator_m5:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: deepFactorEstimator
 
@@ -184,7 +184,7 @@ deepFactorEstimator_m4_daily:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: deepFactorEstimator
 
@@ -203,7 +203,7 @@ canonicalRNN_electricity:
     num_workers: 8
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: canonicalRNN
 
@@ -225,7 +225,7 @@ canonicalRNN_solar_energy:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: canonicalRNN
 
@@ -251,7 +251,7 @@ canonicalRNN_m5:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: canonicalRNN
 
@@ -273,7 +273,7 @@ canonicalRNN_m4_daily:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: canonicalRNN
 
@@ -293,7 +293,7 @@ simplefeedforward_electricity:
     num_workers: 8
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: simplefeedforward
 
@@ -316,7 +316,7 @@ simplefeedforward_solar_energy:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: simplefeedforward
 
@@ -343,7 +343,7 @@ simplefeedforward_m5:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: simplefeedforward
 
@@ -366,7 +366,7 @@ simplefeedforward_m4_daily:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: simplefeedforward
 
@@ -390,7 +390,7 @@ NBEATSEnsembleEstimator_electricity:
       $eval: $trial.dataset.meta.prediction_length
     widths:
     - 256
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: NBEATSEnsembleEstimator
 
@@ -417,7 +417,7 @@ NBEATSEnsembleEstimator_solar_energy:
     use_feat_static_cat: true
     widths:
     - 512
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: NBEATSEnsembleEstimator
 
@@ -448,7 +448,7 @@ NBEATSEnsembleEstimator_m5:
     use_feat_static_cat: true
     widths:
     - 512
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: NBEATSEnsembleEstimator
 
@@ -475,7 +475,7 @@ NBEATSEnsembleEstimator_m4_daily:
     use_feat_static_cat: true
     widths:
     - 512
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: NBEATSEnsembleEstimator
 
@@ -495,7 +495,7 @@ MQRNNEstimator_electricity:
     num_workers: 8
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: MQRNNEstimator
 
@@ -518,7 +518,7 @@ MQRNNEstimator_solar_energy:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: MQRNNEstimator
 
@@ -545,7 +545,7 @@ MQRNNEstimator_m5:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: MQRNNEstimator
 
@@ -569,7 +569,7 @@ MQRNNEstimator_m4_daily:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: MQRNNEstimator
 
@@ -589,7 +589,7 @@ TransformerEstimator_electricity:
     num_workers: 8
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: TransformerEstimator
 
@@ -612,7 +612,7 @@ TransformerEstimator_solar_energy:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: TransformerEstimator
 
@@ -639,7 +639,7 @@ TransformerEstimator_m5:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: TransformerEstimator
 
@@ -662,7 +662,7 @@ TransformerEstimator_m4_daily:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: TransformerEstimator
 
@@ -681,7 +681,7 @@ MQCNNEstimator_electricity:
     num_workers: 8
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: MQCNNEstimator
 
@@ -704,7 +704,7 @@ MQCNNEstimator_solar_energy:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: MQCNNEstimator
 
@@ -727,6 +727,6 @@ MQCNNEstimator_m4_daily:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: MQCNNEstimator

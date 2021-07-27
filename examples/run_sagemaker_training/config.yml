@@ -2,7 +2,7 @@
 base_algo:
   name: 
     $eval: $trial.algorithm.hyperparameters.forecaster_name.split('.')[-1]
-  image: 817344031547.dkr.ecr.eu-west-1.amazonaws.com/gluonts:2020-11-01
+  image: 012345678901.dkr.ecr.eu-west-1.amazonaws.com/gluonts:2020-11-01
   hyperparameters:
     freq:
       $eval: $trial.dataset.meta.freq

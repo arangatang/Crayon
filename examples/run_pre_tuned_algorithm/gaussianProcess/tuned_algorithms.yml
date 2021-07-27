@@ -15,7 +15,7 @@ gaussianProcessEstimator_electricity:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     sample_noise: false
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: gaussianProcessEstimator
 
@@ -38,7 +38,7 @@ gaussianProcessEstimator_solar_energy:
       $eval: $trial.dataset.meta.prediction_length
     sample_noise: false
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: gaussianProcessEstimator
 
@@ -60,6 +60,6 @@ gaussianProcessEstimator_m4_daily:
       $eval: $trial.dataset.meta.prediction_length
     sample_noise: true
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: gaussianProcessEstimator

@@ -1,0 +1,39 @@
+The best config can be found in: /home/leonardo/Documents/crayon/gridsearch/March-18-2021--23-11-35/config-10.yml 
+All configs can be found in: /home/leonardo/Documents/crayon/gridsearch/March-18-2021--23-11-35
+[
+    GridSearchResults(
+        config="/home/leonardo/Documents/crayon/gridsearch/March-18-2021--02-54-37/config-26.yml",
+        value=0.7239864148970759,
+        parameters={
+            "learning_rate": 0.001,
+            "context_length": {"$eval": "$trial.dataset.meta.prediction_length"},
+            "num_layers": 4,
+            "num_cells": 60,
+        },
+        path="/home/leonardo/Documents/crayon/gridsearch/March-18-2021--02-54-37",
+    ),
+    GridSearchResults(
+        config="/home/leonardo/Documents/crayon/gridsearch/March-18-2021--13-50-27/config-17.yml",
+        value=0.5693499017852824,
+        parameters={
+            "learning_rate": 0.0005,
+            "context_length": {"$eval": "2 * $trial.dataset.meta.prediction_length"},
+            "num_layers": 4,
+            "num_cells": 60,
+        },
+        path="/home/leonardo/Documents/crayon/gridsearch/March-18-2021--13-50-27",
+    ),
+    GridSearchResults(
+        config="/home/leonardo/Documents/crayon/gridsearch/March-18-2021--23-11-35/config-10.yml",
+        value=2.000301631455687,
+        parameters={
+            "learning_rate": 0.0005,
+            "context_length": {"$eval": "2 * $trial.dataset.meta.prediction_length"},
+            "num_layers": 1,
+            "num_cells": 40,
+        },
+        path="/home/leonardo/Documents/crayon/gridsearch/March-18-2021--23-11-35",
+    ),
+]
+
+total time: 87729.332155954

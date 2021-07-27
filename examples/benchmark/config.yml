@@ -1,11 +1,5 @@
 base:
-    #image: gluonts:cpu # ~10 
-    #image: gluonts:cpu-mkl # ~9
-    #image: gluonts:gpu_101 # ~9.5
-    #image: gluonts:gpu_101-cudnn7
-    #image: gluonts:gpu_101-cudnn7-ujson # 7.7
-    #image: gluon-ts:gpu
-    image: gluonts-patched-101-cudnn7:latest
+    image: arangatang/masterthesis:gluonts_commit_4d1a9a0
 
 SimpleFeedForward:
     $from: base

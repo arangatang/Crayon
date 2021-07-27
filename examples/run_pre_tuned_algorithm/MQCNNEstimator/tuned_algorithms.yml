@@ -13,7 +13,7 @@ MQCNNEstimator_electricity:
     num_workers: 8
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: MQCNNEstimator
 
@@ -36,7 +36,7 @@ MQCNNEstimator_solar_energy:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: MQCNNEstimator
 
@@ -59,7 +59,7 @@ MQCNNEstimator_m4_daily:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: MQCNNEstimator
 
@@ -86,6 +86,6 @@ MQCNNEstimator_m5:
     prediction_length:
       $eval: $trial.dataset.meta.prediction_length
     use_feat_static_cat: true
-  image: gluonts:cpu_official
+  image: arangatang/masterthesis:gluonts_commit_4d1a9a0
   instance: local
   name: MQCNNEstimator
