@@ -1,11 +1,28 @@
 # Crayon
 
+## Prerequisites
+The runtool need to be installed from
+
+https://github.com/awslabs/gluon-ts-tools/tree/main/runtool
+
 ## Installation
+
 Tested on Python 3.8.5
 
 ```bash
 pip install -e .
 ```
+
+Therafter a AWS config file need to be created in `~/.aws/config` on unix based systems and on `C:\Users\USERNAME\.aws\config` if on Windows.  
+
+Inside it the following content need to be placed
+
+```
+[default]
+region = eu-west-1
+```
+The region used is ignored when executing locally. However it is a requirement from the boto3 library even though it is ignored when executing locally.
+
 
 ## Examples
 Below are commands to run Tuning, Benchmarking, Verification and to present the rankings of all benchmarks.
