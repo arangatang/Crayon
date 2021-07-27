@@ -1,0 +1,33 @@
+constant:
+    name: constant
+    meta:
+        freq: H
+        prediction_length: 24
+    path:
+        train: s3://gluonts-run-tool/gluon_ts_datasets/constant/train/data.json
+        test: s3://gluonts-run-tool/gluon_ts_datasets/constant/test/data.json
+
+electricity:
+    name: electricity
+    meta:
+        feat_static_cat: 
+            -   cardinality: '321'
+                name: feat_static_cat
+        freq: 1H
+        prediction_length: 24
+    path: 
+        train: s3://gluonts-run-tool/gluon_ts_datasets/electricity/train/data.json
+        test: s3://gluonts-run-tool/gluon_ts_datasets/electricity/train/data.json
+
+
+electricity_local:
+    $from: electricity
+    path:
+        train: file:///Users/freccero/.mxnet/gluon-ts/datasets/electricity/train/data.json
+        test: file:///Users/freccero/.mxnet/gluon-ts/datasets/electricity/test/data.json
+
+constant_local:
+    $from: constant
+    path:
+        train: file:///Users/freccero/.mxnet/gluon-ts/datasets/constant/train/train.json
+        test: file:///Users/freccero/.mxnet/gluon-ts/datasets/constant/test/test.json

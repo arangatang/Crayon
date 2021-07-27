@@ -1,0 +1,92 @@
+TransformerEstimator_electricity:
+  hyperparameters:
+    context_length:
+      $eval: 2 * $trial.dataset.meta.prediction_length
+    embedding_dimension: 20
+    epochs: 100
+    forecaster_name: gluonts.model.transformer.TransformerEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    inner_ff_dim_scale: 6
+    learning_rate: 0.01
+    listify_dataset: 'yes'
+    model_dim: 32
+    num_workers: 8
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+  image: gluonts:cpu_official
+  instance: local
+  name: TransformerEstimator
+
+TransformerEstimator_solar_energy:
+  hyperparameters:
+    cardinality:
+    - 137
+    context_length:
+      $eval: $trial.dataset.meta.prediction_length
+    embedding_dimension: 10
+    epochs: 100
+    forecaster_name: gluonts.model.transformer.TransformerEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    inner_ff_dim_scale: 6
+    learning_rate: 0.001
+    listify_dataset: 'yes'
+    model_dim: 64
+    num_workers: 6
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    use_feat_static_cat: true
+  image: gluonts:cpu_official
+  instance: local
+  name: TransformerEstimator
+
+TransformerEstimator_m5:
+  hyperparameters:
+    cardinality:
+    - 3049
+    - 7
+    - 3
+    - 10
+    - 3
+    context_length:
+      $eval: $trial.dataset.meta.prediction_length
+    embedding_dimension: 10
+    epochs: 100
+    forecaster_name: gluonts.model.transformer.TransformerEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    inner_ff_dim_scale: 4
+    learning_rate: 0.0001
+    listify_dataset: 'yes'
+    model_dim: 64
+    num_workers: 6
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    use_feat_static_cat: true
+  image: gluonts:cpu_official
+  instance: local
+  name: TransformerEstimator
+
+TransformerEstimator_m4_daily:
+  hyperparameters:
+    cardinality:
+    - 4227
+    context_length:
+      $eval: 2 * $trial.dataset.meta.prediction_length
+    embedding_dimension: 10
+    epochs: 100
+    forecaster_name: gluonts.model.transformer.TransformerEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    inner_ff_dim_scale: 4
+    learning_rate: 0.001
+    listify_dataset: 'yes'
+    model_dim: 16
+    num_workers: 6
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    use_feat_static_cat: true
+  image: gluonts:cpu_official
+  instance: local
+  name: TransformerEstimator

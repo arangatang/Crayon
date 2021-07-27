@@ -1,0 +1,55 @@
+# Base algorithm recipes
+base_algo:
+  name: 
+    $eval: $trial.algorithm.hyperparameters.forecaster_name.split('.')[-1]
+  image: 817344031547.dkr.ecr.eu-west-1.amazonaws.com/gluonts:2020-11-01
+  hyperparameters:
+    freq:
+      $eval: $trial.dataset.meta.freq
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+  instance: ml.m5.xlarge 
+  metrics:
+    Coverage[0.1]: 'Coverage\[0\.1\]\): (\d+\.\d+)'
+    Coverage[0.5]: 'Coverage\[0\.5\]\): (\d+\.\d+)'
+    Coverage[0.9]: 'Coverage\[0\.9\]\): (\d+\.\d+)'
+    MAE_Coverage: 'MAE_Coverage\): (\d+\.\d+)'
+    MAPE: 'MAPE\): (\d+\.\d+)'
+    MASE: 'MASE\): (\d+\.\d+)'
+    MSE: 'MSE\): (\d+\.\d+)'
+    MSIS: 'MSIS\): (\d+\.\d+)'
+    ND: 'ND\): (\d+\.\d+)'
+    NRMSE: 'NRMSE\): (\d+\.\d+)'
+    OWA: 'OWA\): (\d+\.\d+)'
+    QuantileLoss[0.1]: 'QuantileLoss\[0\.1\]\): (\d+\.\d+)'
+    QuantileLoss[0.5]: 'QuantileLoss\[0\.5\]\): (\d+\.\d+)'
+    QuantileLoss[0.9]: 'QuantileLoss\[0\.9\]\): (\d+\.\d+)'
+    RMSE: 'RMSE\): (\d+\.\d+)'
+    abs_error: 'abs_error\): (\d+\.\d+)'
+    abs_target_mean: 'abs_target_mean\): (\d+\.\d+)'
+    abs_target_sum: 'abs_target_sum\): (\d+\.\d+)'
+    mean_wQuantileLoss: 'mean_wQuantileLoss\): (\d+\.\d+)'
+    sMAPE: 'sMAPE\): (\d+\.\d+)'
+    seasonal_error: 'seasonal_error\): (\d+\.\d+)'
+    wQuantileLoss[0.1]: 'wQuantileLoss\[0\.1\]\): (\d+\.\d+)'
+    wQuantileLoss[0.5]: 'wQuantileLoss\[0\.5\]\): (\d+\.\d+)'
+    wQuantileLoss[0.9]: 'wQuantileLoss\[0\.9\]\): (\d+\.\d+)'
+
+
+# Algorithm specific parameters
+simplefeedforward:
+  $from: base_algo
+  hyperparameters:
+    epochs: 1
+    time_freq:
+      $eval: $trial.dataset.meta.freq
+    forecaster_name: gluonts.model.simple_feedforward.SimpleFeedForwardEstimator    
+
+constant:
+  name: constant
+  meta:
+    freq: H
+    prediction_length: 24
+  path:
+    train: s3://gluonts-run-tool/gluon_ts_datasets/constant/train/data.json
+    test: s3://gluonts-run-tool/gluon_ts_datasets/constant/test/data.json

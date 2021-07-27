@@ -1,0 +1,91 @@
+MQCNNEstimator_electricity:
+  hyperparameters:
+    context_length:
+      $eval: 2 * $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.seq2seq.MQCNNEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.0001
+    listify_dataset: 'yes'
+    mlp_final_dim: 20
+    mlp_hidden_dimension_seq: []
+    num_workers: 8
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+  image: gluonts:cpu_official
+  instance: local
+  name: MQCNNEstimator
+
+MQCNNEstimator_solar_energy:
+  hyperparameters:
+    cardinality:
+    - 137
+    context_length:
+      $eval: 2 * $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.seq2seq.MQCNNEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.01
+    listify_dataset: 'yes'
+    mlp_final_dim: 20
+    mlp_hidden_dimension_seq:
+    - 2
+    num_workers: 6
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    use_feat_static_cat: true
+  image: gluonts:cpu_official
+  instance: local
+  name: MQCNNEstimator
+
+MQCNNEstimator_m4_daily:
+  hyperparameters:
+    cardinality:
+    - 4227
+    context_length:
+      $eval: 2 * $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.seq2seq.MQCNNEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.0001
+    listify_dataset: 'yes'
+    mlp_final_dim: 10
+    mlp_hidden_dimension_seq:
+    - 1
+    num_workers: 6
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    use_feat_static_cat: true
+  image: gluonts:cpu_official
+  instance: local
+  name: MQCNNEstimator
+
+MQCNNEstimator_m5:
+  hyperparameters:
+    cardinality:
+    - 3049
+    - 7
+    - 3
+    - 10
+    - 3
+    context_length:
+      $eval: $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.seq2seq.MQCNNEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.01
+    listify_dataset: 'yes'
+    mlp_final_dim: 10
+    mlp_hidden_dimension_seq:
+    - 2
+    num_workers: 6
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    use_feat_static_cat: true
+  image: gluonts:cpu_official
+  instance: local
+  name: MQCNNEstimator

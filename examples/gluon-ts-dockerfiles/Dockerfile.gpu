@@ -1,0 +1,15 @@
+FROM nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
+
+RUN apt-get update --fix-missing
+RUN apt-get install -y --no-install-recommends 
+RUN apt-get install curl -y
+RUN apt-get install python3 python3-pip -y
+RUN apt-get install git -y
+
+RUN pip3 install mxnet-cu101mkl 
+
+ADD . /gluonts
+
+RUN pip3 install /gluonts[shell]
+
+ENTRYPOINT ["python3", "-m", "gluonts.shell"]

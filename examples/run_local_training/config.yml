@@ -1,0 +1,27 @@
+SimpleFeedForward:
+    $name: SimpleFeedForward
+    #image: gluonts:cpu_new
+    image: gluon-ts:gpu
+    hyperparameters:
+        epochs: 1
+        freq:
+            $eval: $trial.dataset.meta.freq
+        prediction_length:
+            $eval: 2 * $trial.dataset.meta.prediction_length
+        context_length:
+            $eval: 2 * $trial.algorithm.hyperparameters.prediction_length
+        forecaster_name: gluonts.model.simple_feedforward.SimpleFeedForwardEstimator    
+    instance: local
+
+datasets:
+    - 
+        name: wiki10k
+        meta:
+            freq: H
+            prediction_length: 24
+            num_time_series: 9013
+        path:
+            train: file:///Users/freccero/.mxnet/gluon-ts/datasets/electricity/train/data.json
+            test: file:///Users/freccero/.mxnet/gluon-ts/datasets/electricity/test/data.json
+algorithms:
+    - $ref: SimpleFeedForward

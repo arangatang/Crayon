@@ -1,0 +1,90 @@
+deepar_electricity:
+  hyperparameters:
+    context_length:
+      $eval: 2 * $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.deepar.DeepAREstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.001
+    listify_dataset: 'yes'
+    num_cells: 40
+    num_layers: 1
+    num_workers: 8
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    #distr_output: gluonts.distribution.NegativeBinomialOutput #gluonts.mx.distribution.student_t.StudentTOutput()
+    
+  image: arangatang/masterthesis:gluonts_deepar_bugged_b376349_before_bug
+  instance: local
+  name: deepar
+
+deepar_solar_energy:
+  hyperparameters:
+    cardinality:
+    - 137
+    context_length:
+      $eval: $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.deepar.DeepAREstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.01
+    listify_dataset: 'yes'
+    num_cells: 20
+    num_layers: 1
+    num_workers: 6
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    use_feat_static_cat: true
+  image: arangatang/masterthesis:gluonts_deepar_bugged_b376349_before_bug
+  instance: local
+  name: deepar
+
+deepar_m5:
+  hyperparameters:
+    cardinality:
+    - 3049
+    - 7
+    - 3
+    - 10
+    - 3
+    context_length:
+      $eval: $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.deepar.DeepAREstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.001
+    listify_dataset: 'yes'
+    num_cells: 40
+    num_layers: 3
+    num_workers: 6
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    use_feat_static_cat: true
+  image: arangatang/masterthesis:gluonts_deepar_bugged_b376349_before_bug
+  instance: local
+  name: deepar
+
+deepar_m4_daily:
+  hyperparameters:
+    cardinality:
+    - 4227
+    context_length:
+      $eval: $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.deepar.DeepAREstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.001
+    listify_dataset: 'yes'
+    num_cells: 60
+    num_layers: 1
+    num_workers: 6
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    use_feat_static_cat: true
+  image: arangatang/masterthesis:gluonts_deepar_bugged_b376349_before_bug
+  instance: local
+  name: deepar

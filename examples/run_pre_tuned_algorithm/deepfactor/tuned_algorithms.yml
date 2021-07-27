@@ -1,0 +1,100 @@
+deepFactorEstimator_electricity:
+  hyperparameters:
+    context_length:
+      $eval: 2 * $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.deep_factor.DeepFactorEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.0001
+    listify_dataset: 'yes'
+    num_factors: 10
+    num_hidden_global: 50
+    num_hidden_local: 3
+    num_layers_global: 2
+    num_layers_local: 1
+    num_workers: 8
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+  image: gluonts:cpu_official
+  instance: local
+  name: deepFactorEstimator
+
+deepFactorEstimator_solar_energy:
+  hyperparameters:
+    cardinality:
+    - 137
+    context_length:
+      $eval: $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.deep_factor.DeepFactorEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.0001
+    listify_dataset: 'yes'
+    num_factors: 7
+    num_hidden_global: 50
+    num_hidden_local: 5
+    num_layers_global: 1
+    num_layers_local: 1
+    num_workers: 6
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    use_feat_static_cat: true
+  image: gluonts:cpu_official
+  instance: local
+  name: deepFactorEstimator
+
+deepFactorEstimator_m5:
+  hyperparameters:
+    cardinality:
+    - 3049
+    - 7
+    - 3
+    - 10
+    - 3
+    context_length:
+      $eval: $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.deep_factor.DeepFactorEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.001
+    listify_dataset: 'yes'
+    num_factors: 7
+    num_hidden_global: 30
+    num_hidden_local: 5
+    num_layers_global: 2
+    num_layers_local: 1
+    num_workers: 6
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    use_feat_static_cat: true
+  image: gluonts:cpu_official
+  instance: local
+  name: deepFactorEstimator
+
+deepFactorEstimator_m4_daily:
+  hyperparameters:
+    cardinality:
+    - 4227
+    context_length:
+      $eval: $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.deep_factor.DeepFactorEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.0001
+    listify_dataset: 'yes'
+    num_factors: 7
+    num_hidden_global: 50
+    num_hidden_local: 5
+    num_layers_global: 1
+    num_layers_local: 2
+    num_workers: 6
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    use_feat_static_cat: true
+  image: gluonts:cpu_official
+  instance: local
+  name: deepFactorEstimator

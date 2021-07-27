@@ -1,0 +1,41 @@
+base:
+    #image: gluonts:cpu # ~10 
+    #image: gluonts:cpu-mkl # ~9
+    #image: gluonts:gpu_101 # ~9.5
+    #image: gluonts:gpu_101-cudnn7
+    #image: gluonts:gpu_101-cudnn7-ujson # 7.7
+    #image: gluon-ts:gpu
+    image: gluonts-patched-101-cudnn7:latest
+
+SimpleFeedForward:
+    $from: base
+    name: SimpleFeedForward
+    hyperparameters:
+        epochs: 10
+        freq:
+            $eval: $trial.dataset.meta.freq
+        prediction_length:
+            $eval: 2 * $trial.dataset.meta.prediction_length
+        context_length:
+            $eval: 2 * $trial.algorithm.hyperparameters.prediction_length
+        forecaster_name: gluonts.model.simple_feedforward.SimpleFeedForwardEstimator    
+    instance: local
+
+SimpleFeedForward_electricity:
+    $from: SimpleFeedForward
+    hyperparameters:
+        epochs: 5
+
+deepar:
+    $from: base
+    name: deepar
+    hyperparameters:
+        epochs: 10
+        freq:
+            $eval: $trial.dataset.meta.freq
+        prediction_length:
+            $eval: 2 * $trial.dataset.meta.prediction_length
+        context_length:
+            $eval: 2 * $trial.algorithm.hyperparameters.prediction_length
+        forecaster_name: gluonts.model.deepar.DeepAREstimator    
+    instance: local

@@ -1,0 +1,65 @@
+gaussianProcessEstimator_electricity:
+  hyperparameters:
+    cardinality: 321
+    context_length:
+      $eval: 2 * $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.gp_forecaster.GaussianProcessEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.001
+    listify_dataset: 'yes'
+    max_iter_jitter: 5
+    num_workers: 8
+    params_scaling: false
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    sample_noise: false
+  image: gluonts:cpu_official
+  instance: local
+  name: gaussianProcessEstimator
+
+
+gaussianProcessEstimator_solar_energy:
+  hyperparameters:
+    cardinality: 137
+    context_length:
+      $eval: $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.gp_forecaster.GaussianProcessEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.001
+    listify_dataset: 'yes'
+    max_iter_jitter: 5
+    num_workers: 6
+    params_scaling: false
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    sample_noise: false
+    use_feat_static_cat: true
+  image: gluonts:cpu_official
+  instance: local
+  name: gaussianProcessEstimator
+
+gaussianProcessEstimator_m4_daily:
+  hyperparameters:
+    cardinality: 4227
+    context_length:
+      $eval: $trial.dataset.meta.prediction_length
+    epochs: 100
+    forecaster_name: gluonts.model.gp_forecaster.GaussianProcessEstimator
+    freq:
+      $eval: __trial__.dataset.meta.freq
+    learning_rate: 0.001
+    listify_dataset: 'yes'
+    max_iter_jitter: 10
+    num_workers: 6
+    params_scaling: false
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    sample_noise: true
+    use_feat_static_cat: true
+  image: gluonts:cpu_official
+  instance: local
+  name: gaussianProcessEstimator

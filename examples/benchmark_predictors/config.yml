@@ -1,0 +1,21 @@
+base:
+  image: gluonts:naive
+  instance: local
+  hyperparameters:
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    freq:
+      $eval: $trial.dataset.meta.freq
+  name: 
+    $eval: $trial.algorithm.hyperparameters.forecaster_name.split('.')[-1]
+
+naive2:
+  $from: base
+  hyperparameters:
+    forecaster_name: gluonts.model.naive_2.Naive2Predictor
+
+seasonalNaive:
+  $from: base
+  hyperparameters:
+    forecaster_name: gluonts.model.seasonal_naive.SeasonalNaivePredictor
+  

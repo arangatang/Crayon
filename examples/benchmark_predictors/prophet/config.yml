@@ -1,0 +1,15 @@
+base:
+  image: gluonts:prophet
+  instance: local
+  hyperparameters:
+    prediction_length:
+      $eval: $trial.dataset.meta.prediction_length
+    freq:
+      $eval: $trial.dataset.meta.freq
+  name: 
+    $eval: $trial.algorithm.hyperparameters.forecaster_name.split('.')[-1]
+
+prophet:
+  $from: base
+  hyperparameters:
+    forecaster_name: gluonts.model.prophet.ProphetPredictor
